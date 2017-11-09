@@ -1,15 +1,36 @@
 @import "bourbon"
+$browser-context: 16
 
-$color-white: #FFFFFF
-$color-blue: #00ACD7
-$color-light-blue: #40FFFF
-$f-bold: 'GothamProBold', sans-serif
-$f-medium: 'GothamProMedium', sans-serif
-$f-light: 'GothamProLight', sans-serif
-$f-regular: 'GothamProRegular', sans-serif
+@function get-vw($object)
+  $vw: (1920 * 0.01) * 1px
+  @return ($object / $vw) * 1vw
+
+@function get-vh($object)
+  $vh: (974 * 0.01) * 1px
+  @return ($object / $vh) * 1vh
+
+@function get-rem($pixels, $context: $browser-context)
+  @return #{$pixels/$context}rem
+
+$c-white: #FFFFFF
+$f-regular-r: 'Roboto', sans-serif
 $size-24px: 1.25vw //1.5em
 $size-21px: 1.09375vw //1.313em
 $size-18px: 0.9375vw //1.125em
 $size-14px: 0.7291666666666667vw //0.875em
-=ff($ff)
-  font-family: $ff
+.light
+  font-weight: 300
+.regular
+  font-weight: 400
+.medium
+  font-weight: 500
+.bold
+  font-weight: 700
+.black
+  font-weight: 900
+.text-right
+  text-align: right
+.text-left
+  text-align: left
+.text-center
+  text-align: center

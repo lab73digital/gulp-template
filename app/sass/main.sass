@@ -3,18 +3,36 @@
 @import "libs"
 @import "vars"
 
+*
+    box-sizing: border-box
+
+a
+    text-decoration: none
+    &:-webkit-any-link
+        text-decoration: none
+html
+    font-size: calc(#{get-vw(16px/2)} + #{get-vh(16px/2)})
+
 body
-    font-size: 0.8333333333333334vw
+    font-size: calc(#{get-vw(16px/2)} + #{get-vh(16px/2)})
     position: relative
     line-height: normal
-    font-family: $f-regular
+    font-family: $f-regular-r
     overflow: hidden
     color: #fff
-    background-color: #000
-    background-repeat: no-repeat
-    background-position: center
     height: 100vh
+    min-height: 100vh
+    margin: 0
     padding: 0
+    border: 0
+    outline: none
+    background-color: #000
+    -webkit-font-smoothing: subpixel-antialiased
+    letter-spacing: 1.5px
+    -webkit-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
 
 @import "media"
 // Всегда в конце
