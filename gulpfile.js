@@ -1,4 +1,9 @@
-var gulp           = require('gulp'),
+var 	gulp           = require('gulp'),
+    	babel 		   = require('gulp-babel'),
+		sourcemaps 	   = require('gulp-sourcemaps'),
+		browserify 	   = require('browserify'),
+		babelify 	   = require('babelify'),
+		source 		   = require('vinyl-source-stream'),
 		gutil          = require('gulp-util' ),
 		sass           = require('gulp-sass'),
 		browserSync    = require('browser-sync'),
@@ -18,10 +23,15 @@ var gulp           = require('gulp'),
 gulp.task('scripts', function() {
 	return gulp.src([
 		'app/libs/jquery/dist/jquery.min.js',
-		'app/js/common.js' // Всегда в конце
+		'app/js/es-common.js' // Всегда в конце
 		])
+	.pipe(sourcemaps.init())
+	.pipe(babel({
+		presets: ['es2015']
+	}))
 	.pipe(concat('scripts.min.js'))
 	.pipe(uglify())
+	.pipe(sourcemaps.write("."))
 	.pipe(gulp.dest('app/js'))
 	.pipe(browserSync.reload({stream: true}));
 });
@@ -50,7 +60,7 @@ gulp.task('sass', function() {
 
 gulp.task('watch', ['sass', 'scripts', 'browser-sync'], function() {
 	gulp.watch('app/sass/**/*.sass', ['sass']);
-	gulp.watch(['libs/**/*.js', 'app/js/common.js'], ['scripts']);
+	gulp.watch(['libs/**/*.js', 'app/js/es-common.js'], ['scripts']);
 	gulp.watch('app/*.html', browserSync.reload);
 });
 
