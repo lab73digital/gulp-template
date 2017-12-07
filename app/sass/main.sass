@@ -1,38 +1,26 @@
-@import "bourbon"
-@import "fonts"
-@import "libs"
 @import "vars"
 
-*
-    box-sizing: border-box
+/*==========  Desktop First  ==========*/
+@import "_main"
 
-a
-    text-decoration: none
-    &:-webkit-any-link
-        text-decoration: none
-html
-    font-size: calc(#{get-vw(16px/2)} + #{get-vh(16px/2)})
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1366px)
+    @import "main_1366"
 
-body
-    font-size: calc(#{get-vw(16px/2)} + #{get-vh(16px/2)})
-    position: relative
-    line-height: normal
-    overflow: hidden
-    color: #fff
-    font-family: $f-regular
-    background-color: #000
-    background-repeat: no-repeat
-    background-position: center
-    padding: 0
-    margin: 0
-    border: 0
-    outline: none
-    -webkit-font-smoothing: subpixel-antialiased
-    //letter-spacing: .3px
-    //-webkit-user-select: none
-    //-moz-user-select: none
-    //-ms-user-select: none
-    //user-select: none
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px)
+    @import "main_1200"
 
-@import "media"
-// Всегда в конце
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 767px)
+    @import "main_767"
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px)
+    @import "main_480"
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px)
+    @import "main_320"
